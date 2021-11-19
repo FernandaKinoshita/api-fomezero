@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -28,12 +29,15 @@ public class Alimento implements Serializable {
 	@Column(nullable = false)
 	private double qtde;
 
+	@ManyToOne
+	private Doadora doadora;
+
 	public Alimento() {
 	}
 
-	public Alimento(String nome, double qtde) {
+	public Alimento(String nome, double qtde, Doadora doadora) {		
 		this.nome = nome;
 		this.qtde = qtde;
-
+		this.doadora = doadora;
 	}
 }
